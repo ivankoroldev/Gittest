@@ -1,0 +1,177 @@
+@import 'settings/variables';
+@import 'settings/helpers';
+@import 'settings/reset';
+@import 'settings/normalize';
+@import 'settings/mixins';
+@import 'settings/include-media';
+@import 'settings/fonts';
+
+$breakpoints: (
+    "xs-phone": 320px,
+    "phone": 480px,
+    "lg-phone": 562px,
+    "tablet": 768px,
+    "desktop": 1024px,
+    "widescreen": 1400px,
+);
+
+body {
+    font-family: 'Graphik LCG';
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5;
+    background: #fff;
+    color: #000;
+}
+
+#wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+
+img {
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+}
+
+.transform-wrap {
+    border: 3px solid blue;
+}
+
+.transform {
+    width: 600px;
+    height: 600px;
+    background: #000;
+    position: relative;
+    margin: 50px;
+    color: #fff;
+    padding: 50px;
+
+    &:after {
+        content: 'asfsdafdsaffdsaf';
+        padding: 10px;
+        background: green;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        transition: all .4s ease-in-out;
+    }
+
+    &:hover {
+        &:after {
+            transform: translate(-50%,-50%) scale(.8);
+        }
+    }
+}
+
+.filter {
+    filter: grayscale(100%);
+    transition: all .4s ease-in-out;
+    &:hover {
+        filter: none;
+    }
+}
+
+.smile {
+    height: 300px;
+    width: 300px;
+    margin: 50px;
+    background: blue;
+    border-radius: 50%;
+    position: relative;
+    animation-name: rotate;
+    animation-duration: 3s;
+    animation-delay: 3s;
+    animation-timing-function: ease-in-out;
+    // animation-iteration-count: infinite;
+    animation-fill-mode: both;
+
+    &:after {
+        content: '';
+        height: 5px;
+        width: 100px;
+        background: yellow;
+        display: block;
+        position: absolute;
+        bottom: 70px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation-name: smile;
+        animation-duration: 3s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        
+    }
+
+    .eye {
+        height: 60px;
+        width: 40px;
+        border-radius: 50%;
+        background: yellow;
+        display: block;
+        position: absolute;
+        top: 60px;
+        left: 70px;
+
+        &.right {
+            left: auto;
+            right: 70px;
+            animation-duration: 3s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            &:hover {
+                animation-name: eye;
+            }
+        }
+    }
+}
+
+.heading {
+    padding: 50px;
+    text-align: center;
+}
+
+
+@keyframes eye {
+
+    90% {
+       transform: none;
+    }
+
+    95% {
+        transform: scaleY(0.1);
+    }
+}
+
+@keyframes smile {
+
+    90% {
+       width: 100px;
+    }
+
+    95% {
+       width: 150px;
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: none;
+        margin: 0;
+    }
+
+    50% {
+        transform: translateX(300px) rotate(180deg);
+    }
+
+    100% {
+        transform: none;
+        margin: 0;
+    }
+    
+}
